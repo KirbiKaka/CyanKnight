@@ -1,6 +1,6 @@
 ﻿#pragma strict
 
-var x = 5;
+var x = 2;
 
 function Start () {
 
