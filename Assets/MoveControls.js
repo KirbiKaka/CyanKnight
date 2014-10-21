@@ -1,33 +1,40 @@
 ﻿#pragma strict
 
-var speed = 1;
-var jump_height = 10;
+var horz_speed = 0.5;
+var vert_speed = 7.5;
+var allow_multiple_jumps = false;
 
-var canJump = true;
+/* ~~~ DO NOT CHANGE ~~~ */
+private var canJump;
+
 
 function Start () {
-
+	this.rigidbody2D.fixedAngle = true;
+	canJump = true;
 }
 
 function Update () {
-	if(Input.GetKeyDown("space") && canJump){
-		this.rigidbody2D.velocity.y += 5; //jump
-		canJump = false; //Disable jumping until landing
-	}
-
 	if (Input.GetKey(KeyCode.LeftArrow))
-		transform.Translate(Vector3(-1, 0, 0) * Time.deltaTime * speed);
+		this.rigidbody2D.velocity.x -= horz_speed;
 	if (Input.GetKey(KeyCode.RightArrow))
-		transform.Translate(Vector3( 1, 0, 0) * Time.deltaTime * speed);
+		this.rigidbody2D.velocity.x += horz_speed;
 	if (Input.GetKeyDown(KeyCode.UpArrow) && canJump){
-		rigidbody2D.velocity.y += 5;
-		canJump = false;
+		rigidbody2D.velocity.y += vert_speed;
+		if(!allow_multiple_jumps)
+			canJump = false;
 	}
+	if (Input.GetKeyDown(KeyCode.DownArrow)){
+		rigidbody2D.velocity.y -= vert_speed;
+	}
+	
+	if (Input.GetKeyUp(KeyCode.LeftArrow))
+		this.rigidbody2D.velocity.x = 0;
+	else if (Input.GetKeyUp(KeyCode.RightArrow))
+		this.rigidbody2D.velocity.x = 0;
 }
 
 function OnCollisionEnter2D(coll: Collision2D) {
 	if (coll.gameObject.tag == "Wall") {
-		coll.gameObject.SendMessage("Stop", 10);
 	}
 	if(coll.gameObject.tag == "Ground"){ 	// If the player lands on ground
 	    canJump = true; 					// allow him to jump again
