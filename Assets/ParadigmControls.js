@@ -15,24 +15,24 @@ function Update () {
 	if (pressable) {
 		if (Input.GetKeyDown("q")) {
 			updateList("q");
-			press_time = Date.Now.Ticks;
+			press_time = Time.time * 1000;
 			pressable = false;
 		}
 		else if (Input.GetKeyDown("w")) {
 			updateList("w");
-			press_time = Date.Now.Ticks;
+			press_time = Time.time * 1000;
 			pressable = false;
 		}
 		else if (Input.GetKeyDown("e")) {
 			updateList("e");
-			press_time = Date.Now.Ticks;
+			press_time = Time.time * 1000;
 			pressable = false;
 		}
 	}
 	
-	curr_time = Date.Now.Ticks;
+	curr_time = Time.time * 1000;;
 	Debug.Log(curr_time - press_time);
-	if (!pressable && (curr_time - press_time >= 5000)) pressable = true;
+	if (!pressable && (curr_time - press_time >= 300)) pressable = true;
 	
 	Debug.Log(curr_paradigms);
 }
