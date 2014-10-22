@@ -4,7 +4,6 @@ var horz_speed = 0.5;
 var vert_speed = 7.5;
 var allow_multiple_jumps = false;
 
-/* ~~~ DO NOT CHANGE ~~~ */
 private var canJump;
 
 
