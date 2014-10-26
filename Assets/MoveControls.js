@@ -1,8 +1,8 @@
 ﻿#pragma strict
 
-var horz_speed = 0.5;
-var vert_speed = 7.5;
-var allow_multiple_jumps = false;
+var horzSpeed = 0.5;
+var vertSpeed = 7.5;
+var allowMultipleJumps = false;
 
 private var canJump;
 
@@ -14,16 +14,15 @@ function Start () {
 
 function Update () {
 	if (Input.GetKey(KeyCode.LeftArrow))
-		this.rigidbody2D.velocity.x -= horz_speed;
+		this.rigidbody2D.velocity.x -= horzSpeed;
 	if (Input.GetKey(KeyCode.RightArrow))
-		this.rigidbody2D.velocity.x += horz_speed;
+		this.rigidbody2D.velocity.x += horzSpeed;
+	if (Input.GetKeyDown(KeyCode.DownArrow))
+		rigidbody2D.velocity.y -= vertSpeed;
 	if (Input.GetKeyDown(KeyCode.UpArrow) && canJump){
-		rigidbody2D.velocity.y += vert_speed;
-		if(!allow_multiple_jumps)
+		rigidbody2D.velocity.y += vertSpeed;
+		if(!allowMultipleJumps)
 			canJump = false;
-	}
-	if (Input.GetKeyDown(KeyCode.DownArrow)){
-		rigidbody2D.velocity.y -= vert_speed;
 	}
 	
 	if (Input.GetKeyUp(KeyCode.LeftArrow))
