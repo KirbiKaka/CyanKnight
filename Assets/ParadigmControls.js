@@ -17,24 +17,25 @@ function Update () {
 			updateList("q");
 			press_time = Time.time * 1000;
 			pressable = false;
+			Debug.Log(curr_paradigms);
 		}
 		else if (Input.GetKeyDown("w")) {
 			updateList("w");
 			press_time = Time.time * 1000;
 			pressable = false;
+			Debug.Log(curr_paradigms);
 		}
 		else if (Input.GetKeyDown("e")) {
 			updateList("e");
 			press_time = Time.time * 1000;
 			pressable = false;
+			Debug.Log(curr_paradigms);
 		}
 	}
 	
 	curr_time = Time.time * 1000;;
-	Debug.Log(curr_time - press_time);
+	//Debug.Log(curr_time - press_time);
 	if (!pressable && (curr_time - press_time >= 300)) pressable = true;
-	
-	Debug.Log(curr_paradigms);
 }
 
 function updateList(newParadigm) {
