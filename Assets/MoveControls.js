@@ -1,6 +1,6 @@
 ﻿#pragma strict
 
-var horz_speed = 0.5;
+var horz_speed = 0.4;
 var vert_speed = 7.5;
 var allow_multiple_jumps = false;
 
