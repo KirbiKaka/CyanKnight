@@ -7,20 +7,20 @@ when the appropriate set of keystrokes triggers that action.
 */
 
 // Movement Keys
-var LEFT_KEY = KeyCode.A
-var RIGHT_KEY = KeyCode.D
-var UP_KEY = KeyCode.W
-var DOWN_KEY = KeyCode.S
+var LEFT_KEY = KeyCode.A;
+var RIGHT_KEY = KeyCode.D;
+var UP_KEY = KeyCode.W;
+var DOWN_KEY = KeyCode.S;
 
 // Attack Keys
-var WEAK_KEY = KeyCode.K
-var STRONG_KEY = KeyCode.L
-var SHIELD_KEY = KeyCode.Semicolon
+var WEAK_KEY = KeyCode.K;
+var STRONG_KEY = KeyCode.L;
+var SHIELD_KEY = KeyCode.Semicolon;
 
 // Paradigm Keys
-var P1_KEY = KeyCode.I
-var P2_KEY = KeyCode.O
-var P3_KEY = KeyCode.P
+var P1_KEY = KeyCode.I;
+var P2_KEY = KeyCode.O;
+var P3_KEY = KeyCode.P;
 
 function Start () {
 
