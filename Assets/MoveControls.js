@@ -1,34 +1,51 @@
 ﻿#pragma strict
 
-var horz_speed = 10;
-var vert_speed = 7.5;
-//var allow_multiple_jumps = false;
+// Global constants
+var HORZ_SPEED = 10;
+var VERT_SPEED = 7.5;
+
+// Movement Keys
+var LEFT_KEY = KeyCode.A
+var RIGHT_KEY = KeyCode.D
+var UP_KEY = KeyCode.W
+var DOWN_KEY = KeyCode.S
+
+// Attack Keys
+var WEAK_KEY = KeyCode.K
+var STRONG_KEY = KeyCode.L
+var SHIELD_KEY = KeyCode.Semicolon
+
+// Paradigm Keys
+var P1_KEY = KeyCode.I
+var P2_KEY = KeyCode.O
+var P3_KEY = KeyCode.P
 
 private var isGrounded;
-
+private var allowAirMovement;
 
 function Start () {
 	this.rigidbody2D.fixedAngle = true;
+	isGrounded = true;
+	allowAirMovement = false;
 }
 
 function Update () {
-	if (isGrounded) {
-		if (Input.GetKey(KeyCode.LeftArrow))
-			this.rigidbody2D.velocity.x = -horz_speed;
-		if (Input.GetKey(KeyCode.RightArrow))
-			this.rigidbody2D.velocity.x = horz_speed;
-		if (Input.GetKeyDown(KeyCode.DownArrow))
-			rigidbody2D.velocity.y -= vert_speed;
-		if (Input.GetKeyDown(KeyCode.UpArrow)){
-			rigidbody2D.velocity.y += vert_speed;
-//			if(!allow_multiple_jumps)
-//				isGrounded = false;
-		}
+	if (Input.GetKeyDown(LEFT_KEY)){
+	
+	}
+	if (Input.GetKeyDown(RIGHT_KEY)){
+	
+	}
+	if (Input.GetKeyDown(UP_KEY)) {
+	
+	}	
+	if (Input.GetKeyDown(DOWN_KEY)){
+
 	}
 	
 	if (Input.GetKeyUp(KeyCode.LeftArrow))
 		this.rigidbody2D.velocity.x = 0;
-	else if (Input.GetKeyUp(KeyCode.RightArrow))
+	if (Input.GetKeyUp(KeyCode.RightArrow))
 		this.rigidbody2D.velocity.x = 0;
 }
 
@@ -40,4 +57,20 @@ function OnCollisionEnter2D(coll: Collision2D) {
 function OnCollisionExit2D(coll : Collision2D){
 	if(coll.gameObject.name == "Ground")
 		isGrounded = false;
+}
+
+private function MoveLeft() {
+	this.rigidbody2D.velocity.x = -HORZ_SPEED;
+}
+
+private function MoveRight() {
+	this.rigidbody2D.velocity.x = HORZ_SPEED;
+}
+
+private function JumpUp() {
+	rigidbody2D.velocity.y = VERT_SPEED;
+}
+
+private function FallDown() {
+	rigidbody2D.velocity.y = VERT_SPEED;
 }
