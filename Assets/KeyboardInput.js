@@ -31,26 +31,34 @@ private var recentKeyTimes : Array; 	// Stores the times that the recent keys we
 
 function Start() {
 	recentKeys = [];
-	recentKeyTimes = new float[3];
+	recentKeyTimes = [];
 }
 
 function Update() {
 	// Remove keys pressed more than KEY_WAIT_TIME seconds ago
-	var old_time : float;
-	while (recentKeyTimes.length > 0 && Time.time - recentKeyTimes[0] > KEY_WAIT_TIME) {
-		recentKeys.shift();
-		recentKeyTimes.shift();
+	if (recentKeyTimes.length > 0) {
+		var oldTime : float = recentKeyTimes[0];
+		while (recentKeyTimes.length > 0 && Time.time - oldTime > KEY_WAIT_TIME) {
+			recentKeys.shift();
+			recentKeyTimes.shift();
+			Debug.Log(recentKeys);
+			if (recentKeyTimes.length > 0) {
+				oldTime = recentKeyTimes[0];
+			}
+		}
 	}
+	
 	// Add current keys pressed to recentKeys, allowing a max of MAX_KEY_COMBO keys
 	for (var i = 0; i < COMBO_KEYS.length; i++) {
 		var key = COMBO_KEYS[i];
 		if (Input.GetKeyDown(key)) {
+			recentKeys.push(key);
+			recentKeyTimes.push(Time.time);
 			if (recentKeys.length > MAX_KEY_COMBO) {
 				recentKeys.shift();
 				recentKeyTimes.shift();
 			}
-			recentKeys.push(key);
-			recentKeyTimes.push(Time.time);
+			Debug.Log(recentKeys);
 		}
 	}
 
