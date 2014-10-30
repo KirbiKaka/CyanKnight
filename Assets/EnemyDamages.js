@@ -12,7 +12,7 @@ function Update () {
 	if (health <= 0) Destroy(gameObject);
 	
 	/*GEORGE YOU NEED TO CHANGE THE IF CONDITION*/
-	if (false) {
+	if (Input.GetKeyDown(KeyCode.T)) {
 		currentStrikeBox = Instantiate(strikeBox,
 			new Vector3(transform.position.x + 1, transform.position.y, 0), transform.rotation);
 		currentStrikeBox.AddComponent(BoxCollider2D);
