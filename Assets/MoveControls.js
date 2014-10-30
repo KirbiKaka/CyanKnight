@@ -2,7 +2,7 @@
 
 // Global constants
 var HORZ_SPEED = 5;
-var VERT_SPEED = 7.5;
+var VERT_SPEED = 10;
 
 // Movement Keys
 var LEFT_KEY = KeyCode.A;
