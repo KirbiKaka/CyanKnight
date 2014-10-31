@@ -1,52 +1,25 @@
 ﻿#pragma strict
 
 // Global constants
-var HORZ_SPEED = 5;
+var HORZ_SPEED = 10;
 var VERT_SPEED = 10;
+var SLOW_SPEED = 3;
 
-// Movement Keys
-var LEFT_KEY = KeyCode.A;
-var RIGHT_KEY = KeyCode.D;
-var UP_KEY = KeyCode.W;
-var DOWN_KEY = KeyCode.S;
-
-// Attack Keys
-var WEAK_KEY = KeyCode.K;
-var STRONG_KEY = KeyCode.L;
-var SHIELD_KEY = KeyCode.Semicolon;
-
-// Paradigm Keys
-var P1_KEY = KeyCode.I;
-var P2_KEY = KeyCode.O;
-var P3_KEY = KeyCode.P;
-
-private var isGrounded;
-private var allowAirMovement;
+private var isGrounded;		// determines whether or not CK is on the ground
+private var allowMovement;	// determines if movement is allowed (false if not allowing aerial movement)
+private var allowAttacks;	// determines if attacks are allowed (false while attacking)
+private var slowMovement;	// determines if movement should be showed (true in the air)
 
 function Start () {
 	this.rigidbody2D.fixedAngle = true;
 	isGrounded = true;
-	allowAirMovement = false;
+	allowMovement = true;
+	allowAttacks = true;
+	slowMovement = false;
 }
 
 function Update () {
-	if (Input.GetKeyDown(LEFT_KEY)){
-		MoveLeft();
-	}
-	if (Input.GetKeyDown(RIGHT_KEY)){
-		MoveRight();
-	}
-	if (Input.GetKeyDown(UP_KEY)) {
-		JumpUp();
-	}	
-	if (Input.GetKeyDown(DOWN_KEY)){
-		FallDown();
-	}
-	
-	if (Input.GetKeyUp(KeyCode.LeftArrow))
-		this.rigidbody2D.velocity.x = 0;
-	if (Input.GetKeyUp(KeyCode.RightArrow))
-		this.rigidbody2D.velocity.x = 0;
+
 }
 
 function OnCollisionEnter2D(coll: Collision2D) {
@@ -59,18 +32,27 @@ function OnCollisionExit2D(coll : Collision2D){
 		isGrounded = false;
 }
 
-private function MoveLeft() {
+function MoveLeft() {
 	this.rigidbody2D.velocity.x = -HORZ_SPEED;
 }
 
-private function MoveRight() {
+function MoveRight() {
 	this.rigidbody2D.velocity.x = HORZ_SPEED;
 }
 
-private function JumpUp() {
-	rigidbody2D.velocity.y = VERT_SPEED;
+function JumpUp() {
+	this.rigidbody2D.velocity.y = VERT_SPEED;
 }
 
-private function FallDown() {
-	rigidbody2D.velocity.y = -VERT_SPEED;
+function FallDown() {
+	this.rigidbody2D.velocity.y = -VERT_SPEED;
+}
+
+function SlowToStop() {
+	// Makes CK move slightly farther before stopping
+	if (this.rigidbody2D.velocity.x > 0) {
+		this.rigidbody2D.velocity.x = SLOW_SPEED;
+	} else {
+		this.rigidbody2D.velocity.x = -SLOW_SPEED;
+	}
 }

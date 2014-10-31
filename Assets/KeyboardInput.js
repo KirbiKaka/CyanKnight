@@ -63,25 +63,25 @@ function Update() {
 	}
 
 	// Movement Keys
-	if (Input.GetKeyDown(LEFT_KEY)) { this.rigidbody2D.velocity.x -= 10; }
-	if (Input.GetKeyDown(RIGHT_KEY)) {this.rigidbody2D.velocity.x += 10; }
-	if (Input.GetKeyDown(UP_KEY)) { }	
-	if (Input.GetKeyDown(DOWN_KEY)) { }
+	if (Input.GetKeyDown(LEFT_KEY))		{ }
+	if (Input.GetKeyDown(RIGHT_KEY)) 	{ }
+	if (Input.GetKeyDown(UP_KEY)) 		{ GetComponent(MoveControls).JumpUp(); }	
+	if (Input.GetKeyDown(DOWN_KEY)) 	{ GetComponent(MoveControls).FallDown();}
 	
-	if (Input.GetKey(LEFT_KEY)) { }
-	if (Input.GetKey(RIGHT_KEY)) { }
-	if (Input.GetKey(UP_KEY)) { }	
-	if (Input.GetKey(DOWN_KEY)) { }
+	if (Input.GetKey(LEFT_KEY)) 		{ GetComponent(MoveControls).MoveLeft(); }
+	if (Input.GetKey(RIGHT_KEY))		{ GetComponent(MoveControls).MoveRight(); }
+	if (Input.GetKey(UP_KEY))			{ }	
+	if (Input.GetKey(DOWN_KEY)) 		{ }
 	
-	if (Input.GetKeyUp(LEFT_KEY)) { }
-	if (Input.GetKeyUp(RIGHT_KEY)) { }
-	if (Input.GetKeyUp(UP_KEY)) { }	
-	if (Input.GetKeyUp(DOWN_KEY)) { }
+	if (Input.GetKeyUp(LEFT_KEY)) 		{ GetComponent(MoveControls).SlowToStop(); }
+	if (Input.GetKeyUp(RIGHT_KEY)) 		{ GetComponent(MoveControls).SlowToStop(); }
+	if (Input.GetKeyUp(UP_KEY)) 		{ }	
+	if (Input.GetKeyUp(DOWN_KEY)) 		{ }
 	
 	// Attack Keys
-	if (Input.GetKeyDown(WEAK_KEY)) { }
-	if (Input.GetKeyDown(STRONG_KEY)) { }	
-	if (Input.GetKeyDown(SHIELD_KEY)) { }
+	if (Input.GetKeyDown(WEAK_KEY)) 	{ }
+	if (Input.GetKeyDown(STRONG_KEY)) 	{ }	
+	if (Input.GetKeyDown(SHIELD_KEY)) 	{ }
 	
 	if (Input.GetKey(WEAK_KEY)) { }
 	if (Input.GetKey(STRONG_KEY)) { }	
@@ -107,3 +107,4 @@ function Update() {
 	// Combo Keys
 	
 }
+
