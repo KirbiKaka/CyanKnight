@@ -107,7 +107,3 @@ function Update() {
 	// Combo Keys
 	
 }
-
-private function Wait(seconds) {
-	yield WaitForSeconds(seconds);
-}
