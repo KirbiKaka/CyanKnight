@@ -83,28 +83,50 @@ function Update() {
 	if (Input.GetKeyDown(STRONG_KEY)) 	{ }	
 	if (Input.GetKeyDown(SHIELD_KEY)) 	{ }
 	
-	if (Input.GetKey(WEAK_KEY)) { }
-	if (Input.GetKey(STRONG_KEY)) { }	
-	if (Input.GetKey(SHIELD_KEY)) { }
+	if (Input.GetKey(WEAK_KEY)) 		{ }
+	if (Input.GetKey(STRONG_KEY)) 		{ }	
+	if (Input.GetKey(SHIELD_KEY)) 		{ }
 	
-	if (Input.GetKeyUp(STRONG_KEY)) { }	
-	if (Input.GetKeyUp(SHIELD_KEY)) { }
-	if (Input.GetKeyUp(WEAK_KEY)) { }
+	if (Input.GetKeyUp(STRONG_KEY)) 	{ }	
+	if (Input.GetKeyUp(SHIELD_KEY)) 	{ }
+	if (Input.GetKeyUp(WEAK_KEY)) 		{ }
 	
 	// Paradigm Keys
-	if (Input.GetKeyDown(P1_KEY)) { }
-	if (Input.GetKeyDown(P2_KEY)) { }	
-	if (Input.GetKeyDown(P3_KEY)) { }
+	if (Input.GetKeyDown(P1_KEY)) 		{ }
+	if (Input.GetKeyDown(P2_KEY)) 		{ }	
+	if (Input.GetKeyDown(P3_KEY)) 		{ }
 	
-	if (Input.GetKey(P1_KEY)) { }
-	if (Input.GetKey(P2_KEY)) { }	
-	if (Input.GetKey(P3_KEY)) { }
+	if (Input.GetKey(P1_KEY)) 			{ }
+	if (Input.GetKey(P2_KEY)) 			{ }	
+	if (Input.GetKey(P3_KEY)) 			{ }
 	
-	if (Input.GetKeyUp(P1_KEY)) { }
-	if (Input.GetKeyUp(P2_KEY)) { }	
-	if (Input.GetKeyUp(P3_KEY)) { }
+	if (Input.GetKeyUp(P1_KEY)) 		{ }
+	if (Input.GetKeyUp(P2_KEY)) 		{ }	
+	if (Input.GetKeyUp(P3_KEY)) 		{ }
 	
 	// Combo Keys
-	
+	if (checkCombo([RIGHT_KEY, RIGHT_KEY]))	{ Debug.Log("COMBO: dash"); }
 }
 
+/** 
+Takes in an Array of comboKeys, using the default names defined at the top,
+and checks if those comboKeys were the recentKeys pressed. If so, it resets
+recentKeys, presuming that the combo has been used up.
+*/
+function checkCombo(comboKeys : Array) {
+	if (comboKeys.length != recentKeys.length) {
+		return false;
+	}
+	for (var i = 0; i < comboKeys.length; i++) {
+		var comboKey : KeyCode = comboKeys[i];
+		var recentKey : KeyCode = recentKeys[i];
+		if (comboKey != recentKey) {
+			return false;
+		}
+	}
+	for (var j = 0; j < comboKeys.length; j++) {
+		recentKeys.shift();
+		recentKeyTimes.shift();
+	}
+	return true;
+}
