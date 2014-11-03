@@ -59,20 +59,27 @@ function FallDown() {
 }
 
 function DashLeft() {
-	this.rigidbody2D.velocity.x = -10*HORZ_SPEED;
-	this.rigidbody2D.AddForce(Vector2.right*HORZ_SPEED);
-	WaitForSeconds(1);
-	this.rigidbody2D.AddForce(-Vector2.right*HORZ_SPEED);
+	Debug.Log("dash left");
+	this.rigidbody2D.velocity.x = -20*HORZ_SPEED;
+	this.rigidbody2D.AddForce(Vector2.right*HORZ_SPEED/2);
+//	WaitForSeconds(1);
+//	this.rigidbody2D.AddForce(-Vector2.right*HORZ_SPEED/2);
+	allowMovement = false;
+	
 }
 
 function DashRight() {
-	this.rigidbody2D.velocity.x = 10*HORZ_SPEED;
-	this.rigidbody2D.AddForce(-Vector2.right*HORZ_SPEED);
-	WaitForSeconds(1);
-	this.rigidbody2D.AddForce(Vector2.right*HORZ_SPEED);
+	Debug.Log("dash right");
+	this.rigidbody2D.velocity.x = 20*HORZ_SPEED;
+	this.rigidbody2D.AddForce(-Vector2.right*HORZ_SPEED/2);
+//	WaitForSeconds(1);
+//	this.rigidbody2D.AddForce(Vector2.right*HORZ_SPEED/2);
+	allowMovement = false;
 }
 
 function SlowToStop() {
+	if (!allowMovement)
+		return;
 	// Makes CK move slightly farther before stopping
 	if (this.rigidbody2D.velocity.x > 0) {
 		this.rigidbody2D.velocity.x = SLOW_HORZ_SPEED;

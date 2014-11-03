@@ -105,8 +105,8 @@ function Update() {
 	if (Input.GetKeyUp(P3_KEY)) 		{ }
 	
 	// Combo Keys
-	if (checkCombo([LEFT_KEY, LEFT_KEY]))	{ GetComponent(MoveControls).DashLeft(); Debug.Log("dash left"); }
-	if (checkCombo([RIGHT_KEY, RIGHT_KEY]))	{ GetComponent(MoveControls).DashRight(); Debug.Log("dash right"); }
+	if (checkCombo([LEFT_KEY, LEFT_KEY]))	{ GetComponent(MoveControls).DashLeft(); }
+	if (checkCombo([RIGHT_KEY, RIGHT_KEY]))	{ GetComponent(MoveControls).DashRight(); }
 }
 
 /** 
