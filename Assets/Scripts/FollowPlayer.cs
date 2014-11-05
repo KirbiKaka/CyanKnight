@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿/*
+using UnityEngine;
 using System.Collections;
 
 public class FollowPlayer : MonoBehaviour
@@ -20,3 +21,4 @@ public class FollowPlayer : MonoBehaviour
 		transform.position = player.position + offset;
 	}
 }
+*/

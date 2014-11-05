@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿/*
+using UnityEngine;
 using System.Collections;
 
 public class CameraFollow : MonoBehaviour 
@@ -65,3 +66,4 @@ public class CameraFollow : MonoBehaviour
 		transform.position = new Vector3(targetX, targetY, transform.position.z);
 	}
 }
+*/

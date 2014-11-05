@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿/*
+using UnityEngine;
 using System.Collections;
 
 public class BackgroundParallax : MonoBehaviour
@@ -49,3 +50,4 @@ public class BackgroundParallax : MonoBehaviour
 		previousCamPos = cam.position;
 	}
 }
+*/

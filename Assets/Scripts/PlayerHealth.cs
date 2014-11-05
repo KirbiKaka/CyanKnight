@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿/*
+using UnityEngine;
 using System.Collections;
 
 public class PlayerHealth : MonoBehaviour
@@ -106,3 +107,4 @@ public class PlayerHealth : MonoBehaviour
 		healthBar.transform.localScale = new Vector3(healthScale.x * health * 0.01f, 1, 1);
 	}
 }
+*/
