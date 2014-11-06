@@ -1,6 +1,6 @@
 ﻿#pragma strict
-
-var health : int; health = 5;
+var totalhealth : int; totalhealth = 5;
+var health : int; health = totalhealth;
 var strikeBox : GameObject; strikeBox = new GameObject();
 var currentStrikeBox : GameObject;
 private var direction: int; direction = 0;
@@ -9,6 +9,9 @@ private var offcooldowntime : float;
 var oncooldown : boolean; oncooldown = false;
 var aggro : boolean; aggro = false;
 public var Speed : float; Speed = 1;
+private var counter : int; counter = 0;
+public var movespeed = 1f;
+public var turnspeed = 180f;
 
 function Start () {
 
@@ -29,6 +32,7 @@ function Attack(dir) {
 }
 
 function Update () {
+	counter += 1;
 	var CyanKnight = GameObject.FindGameObjectWithTag("Player");
 	if (health <= 0) Destroy(gameObject);
 	var playerpos = CyanKnight.transform.position;
@@ -42,22 +46,22 @@ function Update () {
 	if (distance <= 5f) {
 		transform.LookAt(CyanKnight.transform.position);
 		if (distance >= 1f) {// Not sure if I should include this in the code since it might allow for mobbing
-			transform.Translate(Vector3.forward * Time.deltaTime);
+			transform.Translate(Vector3.forward * movespeed * Time.deltaTime);
 		}
 		// transform.Translate(Vector2.MoveTowards(transform.position, CyanKnight.transform.position, distance) * Speed * Time.deltaTime);
 	} else {
-		var rand = Random.Range(0.0, 1.0);
-		if (rand <= 0.5) {
-			transform.Rotate(Vector3.left * Time.deltaTime);
-			transform.Translate(Vector3.forward * Time.deltaTime);
-			//transform.Translate(Vector3.forward * Time.deltaTime); // Move Left
+		if (counter % 300 == 0) {
+			var rand = Random.Range(0.0, 1.0);
+			if (rand <= 0.5) {
+				transform.Rotate(Vector3.left * Time.deltaTime, turnspeed * Time.deltaTime);
+			} else {
+				transform.Rotate(Vector3.right * Time.deltaTime, turnspeed * Time.deltaTime);
+			}
 		} else {
-			transform.Rotate(Vector3.right * Time.deltaTime);
-			transform.Translate(Vector3.forward * Time.deltaTime);
-			// transform.Translate(Vector3.back * Time.deltaTime); // Move Right
+			transform.Translate(Vector3.forward * movespeed * Time.deltaTime);
 		}
 	}
-	if ((health < 5) || (distance <= 10f)) {
+	if ((health < totalhealth) || (distance <= 5f)) {
 		aggro = true;
 	} else {
 		aggro = false;
