@@ -3,8 +3,8 @@ using System.Collections;
 
 public class MovementControl : MonoBehaviour {
 	// Global constants
-	float HORZ_SPEED = 10;
-	float SLOW_HORZ_SPEED = 5;
+	float HORZ_SPEED = 2;
+	float SLOW_HORZ_SPEED = 1;
 	float VERT_SPEED = 10;
 
 	private bool allowMovement;	// determines if movement is allowed (false if not allowing aerial movement)
