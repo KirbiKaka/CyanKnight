@@ -10,35 +10,45 @@ when the appropriate set of keystrokes triggers that action.
 public class InputControl : MonoBehaviour {
 	private MovementControl movementControls;
 	// Movement Keys
-	static KeyCode LEFT_KEY = KeyCode.A;
-	static KeyCode RIGHT_KEY = KeyCode.D;
-	static KeyCode UP_KEY = KeyCode.W;
-	static KeyCode DOWN_KEY = KeyCode.S;
+	public static KeyCode LEFT_KEY = KeyCode.A;
+	public static KeyCode RIGHT_KEY = KeyCode.D;
+	public static KeyCode UP_KEY = KeyCode.W;
+	public static KeyCode DOWN_KEY = KeyCode.S;
 	
 	// Attack Keys
-	static KeyCode WEAK_KEY = KeyCode.K;
-	static KeyCode STRONG_KEY = KeyCode.L;
-	static KeyCode SHIELD_KEY = KeyCode.Semicolon;
+	public static KeyCode WEAK_KEY = KeyCode.K;
+	public static KeyCode STRONG_KEY = KeyCode.L;
+	public static KeyCode SHIELD_KEY = KeyCode.Semicolon;
 	
 	// Paradigm Keys
-	static KeyCode P1_KEY = KeyCode.I;
-	static KeyCode P2_KEY = KeyCode.O;
-	static KeyCode P3_KEY = KeyCode.P;
+	public static KeyCode P1_KEY = KeyCode.I;
+	public static KeyCode P2_KEY = KeyCode.O;
+	public static KeyCode P3_KEY = KeyCode.P;
 	
 	// Combo Keys
 	private int MAX_KEY_COMBO = 3;
-	private double KEY_WAIT_TIME = 0.3; 		// 0.3 seconds
+	private float KEY_WAIT_TIME = 0.3f; 		// 0.3 seconds
 	private static KeyCode[] COMBO_KEYS = {LEFT_KEY, RIGHT_KEY, UP_KEY, DOWN_KEY, WEAK_KEY, STRONG_KEY, SHIELD_KEY};
 	private List<KeyCode> recentKeys; 		// Stores the recent keys pressed, to check for combos
-	private List<double> recentKeyTimes; 	// Stores the times that the recent keys were pressed
-	
-	void Start() {
+	private List<float> recentKeyTimes; 	// Stores the times that the recent keys were pressed
+
+	void Awake() {
 		movementControls = GameObject.Find ("Cyan Knight").GetComponent<MovementControl> ();
-		recentKeys = new List<KeyCode>();
-		recentKeyTimes = new List<double>();
 	}
-	
+
+	void Start() {
+		recentKeys = new List<KeyCode>();
+		recentKeyTimes = new List<float>();
+	}
+
+	//** TEST WITH fixedUpdate **//
 	void Update() {
+		/**
+		// If the jump button is pressed and the player is grounded then the player should jump.
+		if(Input.GetKeyDown("Jump") && grounded)
+			jump = true;
+		*/
+
 		// Remove keys pressed more than KEY_WAIT_TIME seconds ago
 		while (recentKeyTimes.Count > 0 && Time.time - recentKeyTimes[0] > KEY_WAIT_TIME) {
 			recentKeys.RemoveAt (0);
@@ -58,17 +68,7 @@ public class InputControl : MonoBehaviour {
 				LogKeys (recentKeys);
 			}
 		}
-	}
 
-	private void LogKeys(List<KeyCode> recentKeys) {
-		string str = "";
-		foreach (KeyCode key in recentKeys) {
-			str += key + " ";
-		}
-		Debug.Log (str);
-	}
-
-	void FixedUpdate() {
 		// Movement Keys
 		if (Input.GetKeyDown(LEFT_KEY))		{ }
 		if (Input.GetKeyDown(RIGHT_KEY)) 	{ }
@@ -114,6 +114,14 @@ public class InputControl : MonoBehaviour {
 		// Combo Keys
 		if (getQueuedCombo(new KeyCode[] {LEFT_KEY, LEFT_KEY}))	{ movementControls.DashLeft(); }
 		if (getQueuedCombo(new KeyCode[] {RIGHT_KEY, RIGHT_KEY}))	{ movementControls.DashRight(); }
+	}
+	
+	private void LogKeys(List<KeyCode> recentKeys) {
+		string str = "";
+		foreach (KeyCode key in recentKeys) {
+			str += key + " ";
+		}
+		Debug.Log (str);
 	}
 	
 	/** 
