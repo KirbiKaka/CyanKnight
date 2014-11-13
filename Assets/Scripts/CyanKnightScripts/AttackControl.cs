@@ -27,12 +27,12 @@ public class AttackControl : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		Debug.Log ("naaas");
 		if (animator) {
-			Debug.Log ("yaas");
+			/* If the animator is doing weak1, don't set the state back to idle. */
 			if (this.animator.GetCurrentAnimatorStateInfo (0).IsName ("CK_weak1")) {
 				return;
 			}
+			/* Else, return the state to idle. */
 			animator.SetInteger ("state", 0);
 			if (animator.GetInteger ("state") == 0) {
 				if (Input.GetKeyDown (KeyCode.Space)) {
