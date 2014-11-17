@@ -25,6 +25,7 @@ public class MovementControl : MonoBehaviour
 
 	void Start()
 	{
+		print (LayerMask.NameToLayer ("Ground"));
 		this.rigidbody2D.fixedAngle = true;
 		// Multiply the player's x local scale by -1.
 		Vector3 theScale = transform.localScale;
@@ -34,7 +35,8 @@ public class MovementControl : MonoBehaviour
 
 	void Update() {
 		// The player is grounded if a linecast to the groundcheck position hits anything on the ground layer.
-		isGrounded = Physics2D.Linecast(transform.position, groundCheck.position);  
+		isGrounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
+		//Physics2D.Linecast(transform.position, groundCheck.position);  
 	}
 	
 	public void MoveLeft() {
@@ -119,10 +121,12 @@ public class MovementControl : MonoBehaviour
 	
 	public void SlowToStop() {
 		// Makes CK move slightly farther before stopping
+		rigidbody2D.velocity = new Vector2 (0, rigidbody2D.velocity.y);
+			/*
 		if (this.rigidbody2D.velocity.x > 0) {
 			this.rigidbody2D.AddForce(-1*Vector2.right * slowForce);
 		} else {
 			this.rigidbody2D.AddForce(Vector2.right * slowForce);
-		}
+		} */
 	}
 }

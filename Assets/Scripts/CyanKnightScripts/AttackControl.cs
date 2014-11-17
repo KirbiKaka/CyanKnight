@@ -53,5 +53,6 @@ public class AttackControl : MonoBehaviour
 		curr_weak1StrikeBox.AddComponent<BoxCollider2D> ();
 		curr_weak1StrikeBox.GetComponent<BoxCollider2D> ().isTrigger = true;
 		//curr_weak1StrikeBox.AddComponent<TestCollide> ();
+		// Destroy the strike box after attack completed
 	}
 }
