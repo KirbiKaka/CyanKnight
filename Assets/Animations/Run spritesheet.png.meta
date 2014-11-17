@@ -1,14 +1,15 @@
 fileFormatVersion: 2
-guid: 7ef7244c74f8bd44eb0fe1d2f2bb7437
+guid: 96f3591e6d722e84a8784f0a6e4defa0
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Weak1 Sprite Sheet_0
-    21300002: Weak1 Sprite Sheet_1
-    21300004: Weak1 Sprite Sheet_2
-    21300006: Weak1 Sprite Sheet_3
-    21300008: Weak1 Sprite Sheet_4
-    21300010: Weak1 Sprite Sheet_5
-    21300012: Weak1 Sprite Sheet_6
+    21300000: Run spritesheet_0
+    21300002: Run spritesheet_1
+    21300004: Run spritesheet_2
+    21300006: Run spritesheet_3
+    21300008: Run spritesheet_4
+    21300010: Run spritesheet_5
+    21300012: Run spritesheet_6
+    21300014: Run spritesheet_7
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -50,7 +51,7 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: Weak1 Sprite Sheet_0
+    - name: Run spritesheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -60,7 +61,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Weak1 Sprite Sheet_1
+    - name: Run spritesheet_1
       rect:
         serializedVersion: 2
         x: 700
@@ -70,7 +71,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Weak1 Sprite Sheet_2
+    - name: Run spritesheet_2
       rect:
         serializedVersion: 2
         x: 1400
@@ -80,7 +81,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Weak1 Sprite Sheet_3
+    - name: Run spritesheet_3
       rect:
         serializedVersion: 2
         x: 2100
@@ -90,7 +91,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Weak1 Sprite Sheet_4
+    - name: Run spritesheet_4
       rect:
         serializedVersion: 2
         x: 2800
@@ -100,7 +101,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Weak1 Sprite Sheet_5
+    - name: Run spritesheet_5
       rect:
         serializedVersion: 2
         x: 3500
@@ -110,10 +111,20 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Weak1 Sprite Sheet_6
+    - name: Run spritesheet_6
       rect:
         serializedVersion: 2
         x: 4200
+        y: 0
+        width: 700
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Run spritesheet_7
+      rect:
+        serializedVersion: 2
+        x: 4900
         y: 0
         width: 700
         height: 500
