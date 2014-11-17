@@ -7,7 +7,8 @@ This class will take care of all keyboard input.
 It calls the appropriate action function from other scripts 
 when the appropriate set of keystrokes triggers that action. 
 */
-public class InputControl : MonoBehaviour {
+public class InputControl : MonoBehaviour
+{
 	private MovementControl movementControls;
 	// Movement Keys
 	public static KeyCode LEFT_KEY = KeyCode.A;
@@ -32,17 +33,23 @@ public class InputControl : MonoBehaviour {
 	private List<KeyCode> recentKeys; 		// Stores the recent keys pressed, to check for combos
 	private List<float> recentKeyTimes; 	// Stores the times that the recent keys were pressed
 
-	void Awake() {
+	protected Animator animator;
+
+	void Awake ()
+	{
 		movementControls = GameObject.Find ("Cyan Knight").GetComponent<MovementControl> ();
 	}
 
-	void Start() {
-		recentKeys = new List<KeyCode>();
-		recentKeyTimes = new List<float>();
+	void Start ()
+	{
+		recentKeys = new List<KeyCode> ();
+		recentKeyTimes = new List<float> ();
+		animator = GetComponent<Animator> ();
 	}
 
 	//** TEST WITH fixedUpdate **//
-	void Update() {
+	void Update ()
+	{
 		/**
 		// If the jump button is pressed and the player is grounded then the player should jump.
 		if(Input.GetKeyDown("Jump") && grounded)
@@ -70,53 +77,98 @@ public class InputControl : MonoBehaviour {
 		}
 
 		// Movement Keys
-		if (Input.GetKeyDown(LEFT_KEY))		{ }
-		if (Input.GetKeyDown(RIGHT_KEY)) 	{ }
-		if (Input.GetKeyDown(UP_KEY)) 		{ movementControls.JumpUp(); }	
-		if (Input.GetKeyDown(DOWN_KEY)) 	{ movementControls.FallDown();}
+		if (Input.GetKeyDown (LEFT_KEY)) {
+		}
+		if (Input.GetKeyDown (RIGHT_KEY)) {
+		}
+		if (Input.GetKeyDown (UP_KEY)) {
+			movementControls.JumpUp ();
+		}	
+		if (Input.GetKeyDown (DOWN_KEY)) {
+			movementControls.FallDown ();
+		}
 		
-		if (Input.GetKey(LEFT_KEY)) 		{ movementControls.MoveLeft(); }
-		if (Input.GetKey(RIGHT_KEY))		{ movementControls.MoveRight(); }
-		if (Input.GetKey(UP_KEY))			{ }	
-		if (Input.GetKey(DOWN_KEY)) 		{ }
+		if (Input.GetKey (LEFT_KEY)) {
+			movementControls.MoveLeft ();
+			animator.SetInteger ("state", 2);
+		}
+		if (Input.GetKey (RIGHT_KEY)) {
+			movementControls.MoveRight ();
+			animator.SetInteger ("state", 2);
+		}
+		if (Input.GetKey (UP_KEY)) {
+		}	
+		if (Input.GetKey (DOWN_KEY)) {
+		}
 		
-		if (Input.GetKeyUp(LEFT_KEY)) 		{ movementControls.SlowToStop(); }
-		if (Input.GetKeyUp(RIGHT_KEY)) 		{ movementControls.SlowToStop(); }
-		if (Input.GetKeyUp(UP_KEY)) 		{ }	
-		if (Input.GetKeyUp(DOWN_KEY)) 		{ }
+		if (Input.GetKeyUp (LEFT_KEY)) {
+			movementControls.SlowToStop ();
+			animator.SetInteger ("state", 0);
+		}
+		if (Input.GetKeyUp (RIGHT_KEY)) {
+			movementControls.SlowToStop ();
+			animator.SetInteger ("state", 0);
+		}
+		if (Input.GetKeyUp (UP_KEY)) {
+		}	
+		if (Input.GetKeyUp (DOWN_KEY)) {
+		}
 		
 		// Attack Keys
-		if (Input.GetKeyDown(WEAK_KEY)) 	{ }
-		if (Input.GetKeyDown(STRONG_KEY)) 	{ }	
-		if (Input.GetKeyDown(SHIELD_KEY)) 	{ }
+		if (Input.GetKeyDown (WEAK_KEY)) {
+		}
+		if (Input.GetKeyDown (STRONG_KEY)) {
+		}	
+		if (Input.GetKeyDown (SHIELD_KEY)) {
+		}
 		
-		if (Input.GetKey(WEAK_KEY)) 		{ }
-		if (Input.GetKey(STRONG_KEY)) 		{ }	
-		if (Input.GetKey(SHIELD_KEY)) 		{ }
+		if (Input.GetKey (WEAK_KEY)) {
+		}
+		if (Input.GetKey (STRONG_KEY)) {
+		}	
+		if (Input.GetKey (SHIELD_KEY)) {
+		}
 		
-		if (Input.GetKeyUp(STRONG_KEY)) 	{ }	
-		if (Input.GetKeyUp(SHIELD_KEY)) 	{ }
-		if (Input.GetKeyUp(WEAK_KEY)) 		{ }
+		if (Input.GetKeyUp (STRONG_KEY)) {
+		}	
+		if (Input.GetKeyUp (SHIELD_KEY)) {
+		}
+		if (Input.GetKeyUp (WEAK_KEY)) {
+		}
 		
 		// Paradigm Keys
-		if (Input.GetKeyDown(P1_KEY)) 		{ }
-		if (Input.GetKeyDown(P2_KEY)) 		{ }	
-		if (Input.GetKeyDown(P3_KEY)) 		{ }
+		if (Input.GetKeyDown (P1_KEY)) {
+		}
+		if (Input.GetKeyDown (P2_KEY)) {
+		}	
+		if (Input.GetKeyDown (P3_KEY)) {
+		}
 		
-		if (Input.GetKey(P1_KEY)) 			{ }
-		if (Input.GetKey(P2_KEY)) 			{ }	
-		if (Input.GetKey(P3_KEY)) 			{ }
+		if (Input.GetKey (P1_KEY)) {
+		}
+		if (Input.GetKey (P2_KEY)) {
+		}	
+		if (Input.GetKey (P3_KEY)) {
+		}
 		
-		if (Input.GetKeyUp(P1_KEY)) 		{ }
-		if (Input.GetKeyUp(P2_KEY)) 		{ }	
-		if (Input.GetKeyUp(P3_KEY)) 		{ }
+		if (Input.GetKeyUp (P1_KEY)) {
+		}
+		if (Input.GetKeyUp (P2_KEY)) {
+		}	
+		if (Input.GetKeyUp (P3_KEY)) {
+		}
 		
 		// Combo Keys
-		if (getQueuedCombo(new KeyCode[] {LEFT_KEY, LEFT_KEY}))	{ movementControls.DashLeft(); }
-		if (getQueuedCombo(new KeyCode[] {RIGHT_KEY, RIGHT_KEY}))	{ movementControls.DashRight(); }
+		if (getQueuedCombo (new KeyCode[] {LEFT_KEY, LEFT_KEY})) {
+			movementControls.DashLeft ();
+		}
+		if (getQueuedCombo (new KeyCode[] {RIGHT_KEY, RIGHT_KEY})) {
+			movementControls.DashRight ();
+		}
 	}
 	
-	private void LogKeys(List<KeyCode> recentKeys) {
+	private void LogKeys (List<KeyCode> recentKeys)
+	{
 		string str = "";
 		foreach (KeyCode key in recentKeys) {
 			str += key + " ";
@@ -129,17 +181,18 @@ public class InputControl : MonoBehaviour {
 	and checks if those comboKeys were the recentKeys pressed. If so, it resets
 	recentKeys, presuming that the combo has been used up.
 	*/
-	bool getQueuedCombo(KeyCode[] comboKeys) {
+	bool getQueuedCombo (KeyCode[] comboKeys)
+	{
 		if (comboKeys.Length != recentKeys.Count) {
 			return false;
 		}
 		for (int i = 0; i < comboKeys.Length; i++) {
-			if (comboKeys[i] != recentKeys[i]) {
+			if (comboKeys [i] != recentKeys [i]) {
 				return false;
 			}
 		}
-		recentKeys.RemoveRange(0, comboKeys.Length);
-		recentKeyTimes.RemoveRange(0, comboKeys.Length);
+		recentKeys.RemoveRange (0, comboKeys.Length);
+		recentKeyTimes.RemoveRange (0, comboKeys.Length);
 		return true;
 	}
 }
