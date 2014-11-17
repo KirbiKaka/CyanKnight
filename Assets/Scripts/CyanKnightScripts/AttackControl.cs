@@ -4,14 +4,8 @@ using System.Collections;
 public class AttackControl : MonoBehaviour
 {
 
-	public enum AttackState
-	{
-		None,
-		Windup,
-		Strike,
-		Backswing
-	}
-	protected Animator animator;
+	public enum AttackState { None, Windup, Strike, Backswing }
+	private Animator animator;
 	GameObject weak1StrikeBox;
 	GameObject curr_weak1StrikeBox;
 

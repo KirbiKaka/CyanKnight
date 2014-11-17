@@ -9,6 +9,7 @@ TextureImporter:
     21300008: Weak1 Sprite Sheet_4
     21300010: Weak1 Sprite Sheet_5
     21300012: Weak1 Sprite Sheet_6
+    21300014: Weak1 Sprite Sheet_7
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -53,72 +54,82 @@ TextureImporter:
     - name: Weak1 Sprite Sheet_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 700
-        height: 500
+        x: 98
+        y: 127
+        width: 254
+        height: 289
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Weak1 Sprite Sheet_1
       rect:
         serializedVersion: 2
-        x: 700
-        y: 0
-        width: 700
-        height: 500
+        x: 806
+        y: 127
+        width: 225
+        height: 284
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Weak1 Sprite Sheet_2
       rect:
         serializedVersion: 2
-        x: 1400
-        y: 0
-        width: 700
-        height: 500
+        x: 1495
+        y: 127
+        width: 240
+        height: 284
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Weak1 Sprite Sheet_3
       rect:
         serializedVersion: 2
-        x: 2100
-        y: 0
-        width: 700
-        height: 500
+        x: 2208
+        y: 127
+        width: 244
+        height: 289
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Weak1 Sprite Sheet_4
       rect:
         serializedVersion: 2
-        x: 2800
-        y: 0
-        width: 700
-        height: 500
+        x: 2922
+        y: 238
+        width: 9
+        height: 9
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Weak1 Sprite Sheet_5
       rect:
         serializedVersion: 2
-        x: 3500
-        y: 0
-        width: 700
-        height: 500
+        x: 3630
+        y: 127
+        width: 282
+        height: 298
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Weak1 Sprite Sheet_6
       rect:
         serializedVersion: 2
-        x: 4200
-        y: 0
-        width: 700
-        height: 500
+        x: 4316
+        y: 127
+        width: 290
+        height: 289
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Weak1 Sprite Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 2921
+        y: 127
+        width: 273
+        height: 298
+      alignment: 0
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 

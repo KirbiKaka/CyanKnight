@@ -10,40 +10,36 @@ public class MovementControl : MonoBehaviour
 	public static float maxSpeed = 5f;				// The fastest the player can travel in the x axis.
 	public static float jumpForce = 500f;			// Amount of force added when the player jumps.
 
+	private Animator animator;
+
 	public enum MoveState {Idle, Run, Dash, Airborne, Crouch};
 	public MoveState moveState = MoveState.Idle;
 
 	private Transform groundCheck;			// A position marking where to check if the player is grounded.
-	[SerializeField]
 	private bool isGrounded = false;		// Whether or not the player is grounded.
 	public bool facingRight = false;			// For determining which way the player is currently facing.
 
 	void Awake()
 	{
+		animator = GetComponent<Animator>();
 		groundCheck = transform.Find("groundCheck");
 	}
 
 	void Start()
 	{
-		print (LayerMask.NameToLayer ("Ground"));
 		this.rigidbody2D.fixedAngle = true;
-		// Multiply the player's x local scale by -1.
-		Vector3 theScale = transform.localScale;
-		theScale.x *= -1;
-		transform.localScale = theScale;
 	}
 
-	void Update() {
-		// The player is grounded if a linecast to the groundcheck position hits anything on the ground layer.
+	void Update() 
+	{
 		isGrounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
-		//Physics2D.Linecast(transform.position, groundCheck.position);  
 	}
 	
 	public void MoveLeft() {
 		if (!isGrounded)
 			return;
-
-		// anim.SetFloat("Speed", Mathf.Abs(h));
+		
+		animator.SetInteger ("state", 2);
 
 		float speed = Mathf.Abs (rigidbody2D.velocity.x);
 		if(rigidbody2D.velocity.x > 0 || speed < maxSpeed)
@@ -59,7 +55,8 @@ public class MovementControl : MonoBehaviour
 		if (!isGrounded)
 			return;
 
-		// anim.SetFloat("Speed", Mathf.Abs(h));
+		
+		animator.SetInteger ("state", 2);
 		
 		float speed = Mathf.Abs (rigidbody2D.velocity.x);
 		if(rigidbody2D.velocity.x < 0 || speed < maxSpeed)
@@ -120,6 +117,7 @@ public class MovementControl : MonoBehaviour
 	}
 	
 	public void SlowToStop() {
+		animator.SetInteger ("state", 0);
 		// Makes CK move slightly farther before stopping
 		rigidbody2D.velocity = new Vector2 (0, rigidbody2D.velocity.y);
 			/*
