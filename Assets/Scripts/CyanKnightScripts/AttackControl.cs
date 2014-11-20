@@ -9,8 +9,6 @@ public class AttackControl : MonoBehaviour
 	GameObject weak1StrikeBox;
 	GameObject curr_weak1StrikeBox;
 
-	/* previous attack tracker for combos */
-
 	// Use this for initialization
 	void Start ()
 	{
