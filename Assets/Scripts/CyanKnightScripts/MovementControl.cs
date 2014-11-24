@@ -8,7 +8,7 @@ public class MovementControl : MonoBehaviour
 	public static float dashForce = 10 * moveForce;
 	public static float slowForce = moveForce / 10;
 	public static float maxSpeed = 5f;				// The fastest the player can travel in the x axis.
-	public static float jumpForce = 500f;			// Amount of force added when the player jumps.
+	public static float jumpForce = 1000f;			// Amount of force added when the player jumps.
 
 	private Animator animator;
 
@@ -27,18 +27,19 @@ public class MovementControl : MonoBehaviour
 
 	void Start()
 	{
-		this.rigidbody2D.fixedAngle = true;
-	}
+		this.rigidbody2D.fixedAngle = true;}
 
 	void Update() 
 	{
-		isGrounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
+		isGrounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"))
+				  || Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Enemy"));
 	}
 	
 	public void MoveLeft() {
+		/*
 		if (!isGrounded)
 			return;
-		
+		*/
 		animator.SetInteger ("state", 2);
 
 		float speed = Mathf.Abs (rigidbody2D.velocity.x);
@@ -52,9 +53,10 @@ public class MovementControl : MonoBehaviour
 	}
 	
 	public void MoveRight() {
+		/*
 		if (!isGrounded)
 			return;
-
+		*/
 		
 		animator.SetInteger ("state", 2);
 		
@@ -117,14 +119,19 @@ public class MovementControl : MonoBehaviour
 	}
 	
 	public void SlowToStop() {
+		if (!isGrounded)
+			return;
+
 		animator.SetInteger ("state", 0);
 		// Makes CK move slightly farther before stopping
-		rigidbody2D.velocity = new Vector2 (0, rigidbody2D.velocity.y);
-			/*
-		if (this.rigidbody2D.velocity.x > 0) {
-			this.rigidbody2D.AddForce(-1*Vector2.right * slowForce);
+		//rigidbody2D.velocity = new Vector2 (0, rigidbody2D.velocity.y);
+			
+		if (rigidbody2D.velocity.x > 0) {
+			rigidbody2D.velocity = new Vector2 (2, rigidbody2D.velocity.y);
+			//rigidbody2D.AddForce(-1*Vector2.right * slowForce);
 		} else {
-			this.rigidbody2D.AddForce(Vector2.right * slowForce);
-		} */
+			rigidbody2D.velocity = new Vector2 (-2, rigidbody2D.velocity.y);
+			//rigidbody2D.AddForce(Vector2.right * slowForce);
+		} 
 	}
 }
