@@ -97,7 +97,7 @@ public class InputControl : MonoBehaviour
 		if (Input.GetKeyDown(STRONG_KEY)) 	{ }	
 		if (Input.GetKeyDown(SHIELD_KEY))	{ }
 		
-		if (Input.GetKey(WEAK_KEY))			{ }
+		if (Input.GetKey(WEAK_KEY))			{ attackControl.WeakAttack(); }
 		if (Input.GetKey(STRONG_KEY))		{ }	
 		if (Input.GetKey(SHIELD_KEY)) 		{ }
 		

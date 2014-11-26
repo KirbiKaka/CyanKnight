@@ -1,15 +1,14 @@
 fileFormatVersion: 2
-guid: 7ef7244c74f8bd44eb0fe1d2f2bb7437
+guid: d420a164f191b224bbfab3299a951723
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Weak1 Sprite Sheet_6
-    21300002: Weak1 Sprite Sheet_0
-    21300004: Weak1 Sprite Sheet_1
-    21300006: Weak1 Sprite Sheet_2
-    21300008: Weak1 Sprite Sheet_3
-    21300010: Weak1 Sprite Sheet_4
-    21300012: Weak1 Sprite Sheet_5
-    21300014: Weak1 Sprite Sheet_7
+    21300000: Weak 2 Sprite Sheet_0
+    21300002: Weak 2 Sprite Sheet_1
+    21300004: Weak 2 Sprite Sheet_2
+    21300006: Weak 2 Sprite Sheet_3
+    21300008: Weak 2 Sprite Sheet_4
+    21300010: Weak 2 Sprite Sheet_5
+    21300012: Weak 2 Sprite Sheet_6
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -51,73 +50,73 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: Weak1 Sprite Sheet_6
+    - name: Weak 2 Sprite Sheet_0
       rect:
         serializedVersion: 2
-        x: 100
-        y: 128
-        width: 250
+        x: 127
+        y: 127
+        width: 197
         height: 285
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Weak1 Sprite Sheet_0
+    - name: Weak 2 Sprite Sheet_1
       rect:
         serializedVersion: 2
-        x: 806
-        y: 130
-        width: 223
-        height: 283
+        x: 822
+        y: 127
+        width: 195
+        height: 285
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Weak1 Sprite Sheet_1
+    - name: Weak 2 Sprite Sheet_2
       rect:
         serializedVersion: 2
-        x: 1498
-        y: 129
-        width: 234
+        x: 1514
+        y: 124
+        width: 200
+        height: 287
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Weak 2 Sprite Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 2270
+        y: 126
+        width: 283
+        height: 281
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Weak 2 Sprite Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 2978
+        y: 126
+        width: 324
+        height: 280
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Weak 2 Sprite Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 3689
+        y: 126
+        width: 309
         height: 282
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Weak1 Sprite Sheet_2
+    - name: Weak 2 Sprite Sheet_6
       rect:
         serializedVersion: 2
-        x: 2200
-        y: 127
-        width: 244
-        height: 289
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Weak1 Sprite Sheet_3
-      rect:
-        serializedVersion: 2
-        x: 2924
-        y: 127
-        width: 269
-        height: 298
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Weak1 Sprite Sheet_4
-      rect:
-        serializedVersion: 2
-        x: 3631
-        y: 127
-        width: 279
-        height: 298
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Weak1 Sprite Sheet_5
-      rect:
-        serializedVersion: 2
-        x: 4318
-        y: 127
-        width: 285
-        height: 287
+        x: 4300
+        y: 126
+        width: 251
+        height: 285
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
