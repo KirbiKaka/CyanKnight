@@ -3,22 +3,23 @@ var totalhealth : int; totalhealth = 5;
 var health : int; health = totalhealth;
 var strikeBox : GameObject; strikeBox = new GameObject();
 var currentStrikeBox : GameObject;
-private var direction: int; direction = 0;
 var cooldown : float; cooldown = 2.0;
 private var offcooldowntime : float;
 var oncooldown : boolean; oncooldown = false;
 var aggro : boolean; aggro = false;
-public var Speed : float; Speed = 1;
-private var counter : int; counter = 0;
-public var movespeed = 1f;
-public var turnspeed = 180f;
+public var patrolSpeed : Vector2; patrolSpeed = new Vector2(2, 2);
+public var chaseSpeed : Vector2; chaseSpeed = new Vector2(5, 5);
+public var direction : Vector2; direction = new Vector2(0, 0);
+public var movement : Vector2;
+public var aggrorange : float; aggrorange = 8f;
+
 
 function Start () {
 
 }
 
 function Attack(dir) {
-	if (dir == 0) {
+	if (dir == -1) {
 		currentStrikeBox = Instantiate(strikeBox,
 			new Vector3(transform.position.x - 1, transform.position.y, 0), transform.rotation);
 		}
@@ -31,43 +32,40 @@ function Attack(dir) {
 	currentStrikeBox.AddComponent(EnemyCollide);
 }
 
+function UpdateCooldowns() {
+
+}
+
 function Update () {
-	counter += 1;
 	var CyanKnight = GameObject.FindGameObjectWithTag("Player");
-	if (health <= 0) Destroy(gameObject);
+	if (health <= 0){
+		Destroy(gameObject);
+	}
 	var playerpos = CyanKnight.transform.position;
 	var enemypos = transform.position;
 	if (enemypos.x > playerpos.x) {
-		direction = 0;
+		direction.x = -1;
 	} else {
-		direction = 1;
+		direction.x = 1;
 	}
 	var distance : float; distance = Vector2.Distance(this.transform.position, CyanKnight.transform.position);
-	if (distance <= 5f) {
-		transform.LookAt(CyanKnight.transform.position);
-		if (distance >= 1f) {// Not sure if I should include this in the code since it might allow for mobbing
-			transform.Translate(Vector3.forward * movespeed * Time.deltaTime);
-		}
-		// transform.Translate(Vector2.MoveTowards(transform.position, CyanKnight.transform.position, distance) * Speed * Time.deltaTime);
-	} else {
-		if (counter % 300 == 0) {
-			var rand = Random.Range(0.0, 1.0);
-			if (rand <= 0.5) {
-				transform.Rotate(Vector3.left * Time.deltaTime, turnspeed * Time.deltaTime);
-			} else {
-				transform.Rotate(Vector3.right * Time.deltaTime, turnspeed * Time.deltaTime);
-			}
-		} else {
-			transform.Translate(Vector3.forward * movespeed * Time.deltaTime);
-		}
-	}
-	if ((health < totalhealth) || (distance <= 5f)) {
+	// Update aggro
+	if ((health < totalhealth) || (distance <= aggrorange)) {
 		aggro = true;
 	} else {
 		aggro = false;
 	}
+	// Update movement based on aggro state
+	if (aggro == true) {
+		movement = new Vector2(chaseSpeed.x * direction.x, chaseSpeed.y * direction.y);
+		rigidbody2D.velocity = movement;
+	} else {
+		movement = new Vector2(0, 0);
+		rigidbody2D.velocity = movement;
+	}
+	// Update cooldowns and perform attacks when necessary
 	if ((aggro == true) && (oncooldown == false)) {
-		Attack(direction);
+		Attack(direction.x);
 		oncooldown = true;
 		offcooldowntime = Time.time + cooldown;
 	}
