@@ -12,13 +12,12 @@ public var chaseSpeed : Vector2; chaseSpeed = new Vector2(5, 5);
 public var direction : Vector2; direction = new Vector2(0, 0);
 public var movement : Vector2;
 public var aggrorange : float; aggrorange = 8f;
-public var patrolWayPoints : Transform[];
+// public var patrolWayPoints : Transform[];
 
-private nav: NavMeshAgent;
-private var CyanKnight = GameObject.FindGameObjectWithTag("Player");
-private chaseTimer : float;
-private patrolTimer : float;
-private wayPointIndex : int;
+// private nav: NavMeshAgent;
+// private chaseTimer : float;
+// private patrolTimer : float;
+// private wayPointIndex : int;
 
 function Start () {
 
@@ -46,6 +45,7 @@ function Update () {
 	if (health <= 0){
 		Destroy(gameObject);
 	}
+	var CyanKnight = GameObject.FindGameObjectWithTag("Player");
 	var playerpos = CyanKnight.transform.position;
 	var enemypos = transform.position;
 	if (enemypos.x > playerpos.x) {
