@@ -22,8 +22,7 @@ public class StrikeboxScript : MonoBehaviour {
 	void OnTriggerEnter2D (Collider2D coll) {
 		if (coll.gameObject.tag == "Enemy") {
 			coll.gameObject.GetComponent<EnemyStats>().health -= 1;
-			Debug.Log("Health: " + coll.gameObject.GetComponent<EnemyStats>().health);
-			Debug.Log("Hit an enemy!");
+			Destroy (gameObject);
 		}
 	}
 }
