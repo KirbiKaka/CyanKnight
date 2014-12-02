@@ -12,18 +12,24 @@ public var chaseSpeed : Vector2; chaseSpeed = new Vector2(5, 5);
 public var direction : Vector2; direction = new Vector2(0, 0);
 public var movement : Vector2;
 public var aggrorange : float; aggrorange = 8f;
+public var patrolWayPoints : Transform[];
 
+private nav: NavMeshAgent;
+private var CyanKnight = GameObject.FindGameObjectWithTag("Player");
+private chaseTimer : float;
+private patrolTimer : float;
+private wayPointIndex : int;
 
 function Start () {
 
 }
 
-function Attack(dir) {
-	if (dir == -1) {
+function Attack() {
+	if (direction.x == -1) {
 		currentStrikeBox = Instantiate(strikeBox,
 			new Vector3(transform.position.x - 1, transform.position.y, 0), transform.rotation);
 		}
-	else if (dir == 1) {
+	else if (direction.x == 1) {
 		currentStrikeBox = Instantiate(strikeBox,
 			new Vector3(transform.position.x + 1, transform.position.y, 0), transform.rotation);
 		}
@@ -37,7 +43,6 @@ function UpdateCooldowns() {
 }
 
 function Update () {
-	var CyanKnight = GameObject.FindGameObjectWithTag("Player");
 	if (health <= 0){
 		Destroy(gameObject);
 	}
@@ -65,7 +70,7 @@ function Update () {
 	}
 	// Update cooldowns and perform attacks when necessary
 	if ((aggro == true) && (oncooldown == false)) {
-		Attack(direction.x);
+		Attack();
 		oncooldown = true;
 		offcooldowntime = Time.time + cooldown;
 	}
